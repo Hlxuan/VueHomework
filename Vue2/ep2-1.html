@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>闰年判断 - 实验2 ES6 上</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+        Year <input type="number" id="text" /> <button @click="check">Get</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: "#container",
+            methods: {
+                check() {
+                    let year = document.getElementById('text').value;
+                    if (year > 0 && year % 400 === 0 || year % 4 === 0 && year % 100 != 0) {
+                        console.log(`${year}是闰年`);
+                    } else {
+                        console.log(`${year}不是闰年`);
+                    }
+                },
+            },
+        })
+    </script>
+
+</body>
+
+</html>
+
+<!-- Edit by hlxuan. -->

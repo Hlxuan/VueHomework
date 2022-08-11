@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物清单 - 实验6 指令（下）</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div id="container">
+
+        <table>
+            <tr>
+                <td colspan="2">货物清单:</td>
+            </tr>
+            <tr v-for="item in items">
+                <td style="width: 70%;">货物:{{item.name}}</td>
+                <td style="width: 30%;">价格:{{item.price}}</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <div>付款方式:</div>
+        <div v-if="payType">信用卡支付:<input placeholder="请输入你的信用卡号" v-getfocus key="card" /></div>
+        <div v-else>手机银行:<input placeholder="请输入你的手机号" v-getfocus key="phoneNumber" /></div>
+        <div><button @click="payType=!payType">切换支付模式</button></div>
+
+
+    </div>
+
+    <script>
+
+        const app = new Vue({
+            el: "#container",
+            data: {
+                items: [
+                    {
+                        id: 0,
+                        name: "GEFORCE 3090",
+                        price: 6000,
+                    },
+                    {
+                        id: 1,
+                        name: "键盘",
+                        price: 500,
+                    },
+                    {
+                        id: 2,
+                        name: "显示器",
+                        price: 2000,
+                    }, {
+                        id: 3,
+                        name: "CPU",
+                        price: 3000,
+                    }
+                ],
+                payType: true,
+            },
+            directives: {
+                getfocus: {
+                    bind(element, bind) {
+                        element.focus();
+                    },
+                    inserted(element, bind) {
+                        element.focus();
+                    },
+                    update(element, bind) {
+                        element.focus();
+                    }
+                }
+            },
+        })
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- Edit by hlxuan. -->

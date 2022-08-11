@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票价格-生命周期加强版 - 实验11 生命周期</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>新股价：{{newPrice}}</h2>
+        <h2>旧股价：{{oldPrice}}</h2>
+        <h2 :style="myStyle">
+            <span v-if="differentPrice >= 0">涨</span><span v-else>涨</span>：{{differentPrice}}</span>
+        </h2>
+        <button @click="destory">销毁</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: ".container",
+            data: {
+                newPrice: 0,
+                oldPrice: 0,
+                differentPrice: 0,
+                timer: null,
+                myStyle: {
+                    color: "black",
+                }
+            },
+            methods: {
+                destory() {
+                    this.$destroy();
+                }
+            },
+            watch: {
+                newPrice(newValue, oldValue) {
+                    this.oldPrice = oldValue;
+                    this.differentPrice = newValue - oldValue;
+                    if(this.differentPrice >0){
+                        this.myStyle.color = "red";
+                    }else if(this.differentPrice < 0){
+                        this.myStyle.color = "green";
+                    }else{
+                        this.myStyle.color = "black";
+                    }
+                },
+            },
+            mounted() {
+                this.timer = setInterval(() => {
+                    this.newPrice = Math.floor(Math.random() * 101);
+                }, 1000);
+            },
+            beforeDestroy() {
+                clearInterval(this.timer);
+            },
+            destoryed() {
+                console.log("已销毁");
+            },
+        })
+    </script>
+
+</body>
+
+</html>
+
+<!-- Edit by hlxuan. -->
