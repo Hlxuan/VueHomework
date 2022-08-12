@@ -1,6 +1,6 @@
 # Vue-Homework
 
-这里存放的是我学习VueJs课程所写的Vue前端项目，有Vue2和Vue3的版本。
+这里存放的是我学习Vue课程所写的项目，有Vue2和Vue3的版本。
 
 「不定期更新」
 
@@ -250,7 +250,7 @@
 
 提示：
 
-股票随机数可以组合用`Math.floor() `向下取整 和` Math.random() `取0-1之间的随机小数来得到。
+股票随机数可以组合用`Math.floor()`向下取整和`Math.random()`取0-1之间的随机小数来得到。
 
 每隔几秒做什么，可以用`setInterval()`
 
